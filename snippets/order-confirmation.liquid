@@ -5,7 +5,7 @@
      <path d="M14.956 23.8673L11.2137 19.8087C10.7967 19.3564 10.1337 19.3564 9.71674 19.8087C9.29974 20.2609 9.29974 20.9799 9.71674 21.4321L14.1969 26.2909C14.6139 26.7431 15.2875 26.7431 15.7045 26.2909L27.0385 14.0106C27.4555 13.5584 27.4555 12.8394 27.0385 12.3871C26.6215 11.9349 25.9585 11.9349 25.5415 12.3871L14.956 23.8673Z" fill="white"/>
      </svg></span>
      <span class="confirmation pl-2">Order Confirmed,&nbsp</span>
-     <span class="fade-color"> {{ order.created_at | date: "%d" }}{% case order.created_at | date: "%d" %}{% when '01' %}st{% when '02' %}nd{% when '03' %}rd{% else %}th{% endcase %} {{ order.created_at | date: "%B" }}</span><br>
+     <span class="fade-color"> {{ order.created_at | date: "%d" }}{% case order.created_at %}{% when '01' %}st{% when '02' %}nd{% when '03' %}rd{% else %}th{% endcase %} {{ order.created_at | date: "%B" }}</span><br>
    </div>
    <div class="call py-3 position-relative d-flex align-items-center">
       <span class="svg2">
@@ -114,4 +114,13 @@
     .main-TY-page .svg1:after , .main-TY-page .svg2:before, .main-TY-page .svg2:after {left: 12px;}
     .main-TY-page .svg2:after {top: 26px;}
   }
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% case order.created_at | date: "%d" %}'
+  to: "{% case order.created_at %}"
+  position: 782..809
+{%- endcomment -%}

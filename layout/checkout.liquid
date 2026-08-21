@@ -678,7 +678,7 @@ script.src = "//cdn.invitereferrals.com/js/invite-referrals-1.0.js";
 var entry = document.getElementsByTagName('script')[0];entry.parentNode.insertBefore(script, entry); })();
  
 ir('track', {
-    orderID: '{{order.order_number.}}',
+    orderID: '{{ order.order_number }}',
     event: 'sale', 
     fname: '{{order.customer.first_name}}',
     email: '{{order.email}}',
@@ -702,4 +702,13 @@ ir('track', {
       display: none !important;
     }
   </style>
-</html>
+</html>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{order.order_number.}}"
+  to: "{{ order.order_number }}"
+  position: 29386..29410
+{%- endcomment -%}
